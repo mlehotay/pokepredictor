@@ -19,7 +19,7 @@ def result():
             'longitude': [float(args.get('longitude'))],
             'close_to_water': [args.get('close_to_water')],
             'city': [args.get('city')],
-            'weather': [args.get('weather')],
+            # 'weather': [args.get('weather')],
             'temperature': [args.get('temperature')]
         })
     prediction = pipe.predict(data))
