@@ -18,18 +18,18 @@
       <h4>Enter your PokeGo information to see <br />
         the Pokemon you are searching for.</h4>
 
-        <p>Latitude:<input name="latitude" type="number"></p>
+        <p>Latitude:<input name="latitude" required type="number"></p>
 
-        <p>Longitude:<input name="longitude" type="number"></p>
+        <p>Longitude:<input name="longitude" required type="number"></p>
 
         <p>Close to water:
-        <select name="close_to_water">
+        <select name="close_to_water" required>
           <option value="True">Yes</option>
           <option value="False">No</option>
         </select>
 
         <p>City:
-          <select name="city">
+          <select name="city" required>
           <option value="Adelaide">Adelaide</option>
           <option value="Amman">Amman</option>
           <option value="Amsterdam">Amsterdam</option>
@@ -130,8 +130,13 @@
           <option value="Zurich">Zurich</option>
         </select>
 
+<<<<<<< HEAD
       <!-- <p>Weather:
         <select name="weather">
+=======
+      <p>Weather:
+        <select name="weather" required>
+>>>>>>> 8535387eb2d1632b9f1ac7fa987ee0876d3e9a78
           <option value = "Breezy">Breezy</option>
           <option value = "Clear">Clear</option>
           <option value = "DangerouslyWindy">Dangerously Windy</option>
@@ -148,9 +153,9 @@
           <option value = "Windy">Zurich</option>
         </select> -->
 
-        <p>Temperature:<input name="temperature" type="number"></p>
+        <p>Temperature:<input name="temperature" required type="number"></p>
 
-        <p>Population Density:<input name="population_density" type="number"></p>
+        <p>Population Density:<input name="population_density" required type="number"></p>
 
       <p><input type ="submit" value="submit"/></p>
 
