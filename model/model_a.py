@@ -130,7 +130,7 @@ mapper = DataFrameMapper([
     (['latitude'], [StandardScaler()]),
     (['longitude'], [StandardScaler()]),
     (['temperature'], [StandardScaler()]),
-    (['population_density'], [StandardScaler()])
+    # (['population_density'], [StandardScaler()])
     # (['local_time'], [LabelBinarizer()]),
     ], df_out= True)
 
