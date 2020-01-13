@@ -27,14 +27,28 @@ def fetch_url(url):
 
 soup = BeautifulSoup(fetch_url(url_pokedex))
 table = soup.find(id='Generation_I').parent.next_sibling.next_sibling
+re_cell = re.compile('t[hd]')
 
+previous = 0
 pokedex = []
-for row in table.find_all('tr'):
+for row in table.find_all('tr')[1:-1]:
+    cells = row.find_all(re_cell)
+    #id = int(cells[1].text.split('#')[1].split('\n')[0])
+    try:
+        id = int(cells[1].text.split('#')[1].split('\n')[0])
+    except:
+        continue
+
+    if id == previous:
+        continue
+    else:
+        previous = id
+
     pokemon = {
-        'Kdex': None,
-        'Ndex': None,
-        'MS': None,
-        'Pokemon': None,
+        'Kdex': cells[0].text,
+        'Ndex': id,
+        'MS': cells[2].text,
+        'Pokemon': cells[3].text,
         'Type': []
     }
     pokedex.append(pokemon)
@@ -42,3 +56,8 @@ for row in table.find_all('tr'):
 df = pd.DataFrame(pokedex)
 df.to_csv('data/pokedex.csv', index=False)
 df
+
+
+
+#cells[1]
+#id = int(cells[1].text.split('#')[1].split('\n')[0])
