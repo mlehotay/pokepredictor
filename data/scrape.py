@@ -41,13 +41,22 @@ for row in table.find_all('tr')[1:-1]:
 
     if id not in pokedex:
         name = cells[3].text.strip()
+        try:
+            type1 = cells[4].text.strip()
+        except:
+            type1 = None
+        try:
+            type2 = cells[5].text.strip()
+        except:
+            type2 = None
+
         pokedex[id] = {
                 'pokedex_id': id,
                 'name': name,
                 'wiki': bulbapedia + cells[2].find('a')['href'],
                 #'img': bulbapedia + 'wiki/File:003' + name + '.png',
-                'type': None
-                #type2': None
+                'type_1': type1,
+                'type_2': type2
         }
 
 df = pd.DataFrame.from_dict(pokedex, orient='index')
@@ -60,4 +69,7 @@ soup = BeautifulSoup(fetch_url(url_pokedex))
 table = soup.find(id='Generation_I').parent.next_sibling.next_sibling
 row = table.find_all('tr')[2]
 cells = row.find_all(re.compile('t[hd]'))
-cells[2].find('a')['href']
+#cells[2].find('a')['href']
+cells[4].text.strip()
+cells[5].text.strip()
+cells[6].text.strip()
