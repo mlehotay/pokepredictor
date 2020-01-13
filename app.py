@@ -22,7 +22,7 @@ def result():
             'weather': [args.get('weather')],
             'temperature': [args.get('temperature')]
         })
-    prediction = pipe.predict(data))
+    prediction = pipe.predict(data)
     return render_template(
         'result.html',
         prediction=prediction)
