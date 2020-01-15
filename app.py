@@ -1,8 +1,8 @@
 import pickle
 
-
 from flask import Flask, render_template, request
 import pandas as pd
+
 
 app = Flask(__name__, template_folder='templates')
 pipe = pickle.load(open('model/pipe.pkl', 'rb'))
@@ -22,10 +22,14 @@ def result():
             # 'weather': [args.get('weather')],
             'temperature': [args.get('temperature')]
         })
-    prediction = pipe.predict(data)
+    id = int(pipe.predict(data))
+
+    df = pd.read_csv('data/pokedex.csv')
+
     return render_template(
         'result.html',
-        prediction=prediction)
+        pokemon=df.loc[id]['name'],
+        image = df.loc[id]['img'])
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
