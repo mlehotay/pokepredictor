@@ -53,7 +53,7 @@ for row in table.find_all('tr')[1:-1]:
         pokedex[id] = {
                 'pokedex_id': id,
                 'name': name,
-                'img': cells[2].find('img')['src'][2:],
+                'img': 'https://' + cells[2].find('img')['src'][2:],
                 'wiki': bulbapedia + cells[2].find('a')['href'],
                 'type_1': type1,
                 'type_2': type2
