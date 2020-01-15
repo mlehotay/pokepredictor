@@ -5,8 +5,8 @@ import json
 import time
 import re
 
-bulbapedia = 'https://bulbapedia.bulbagarden.net/'
-url_pokedex = bulbapedia + 'wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number'
+bulbapedia = 'https://bulbapedia.bulbagarden.net'
+url_pokedex = bulbapedia + '/wiki/List_of_Pok%C3%A9mon_by_National_Pok%C3%A9dex_number'
 
 def fetch_url(url):
     name = url.split('/')[-1]
@@ -53,23 +53,20 @@ for row in table.find_all('tr')[1:-1]:
         pokedex[id] = {
                 'pokedex_id': id,
                 'name': name,
+                'img': cells[2].find('img')['src'][2:],
                 'wiki': bulbapedia + cells[2].find('a')['href'],
-                #'img': bulbapedia + 'wiki/File:003' + name + '.png',
                 'type_1': type1,
                 'type_2': type2
         }
 
 df = pd.DataFrame.from_dict(pokedex, orient='index')
 df.to_csv('data/pokedex.csv', index=False)
-df
+df.head()
 
 ###################################################
 # sandbox
 soup = BeautifulSoup(fetch_url(url_pokedex))
 table = soup.find(id='Generation_I').parent.next_sibling.next_sibling
-row = table.find_all('tr')[2]
+row = table.find_all('tr')[10]
 cells = row.find_all(re.compile('t[hd]'))
-#cells[2].find('a')['href']
-cells[4].text.strip()
-cells[5].text.strip()
-cells[6].text.strip()
+cells[2].find('img')['src'][2:]
