@@ -1,19 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
   <head>
     <title>PokePredictor</title>
-    <style>
-      body {
-        background-color: rgba(180, 180, 180);
-        color: black;
-        font-family: candara;
-      }
-      </style>
+      <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <style>
+      body {
+        color: black;
+        font-family: candara;
+        /* background-image: url('../assets/poke.jpg'); */
+      }
+    </style>
+
+    <CENTER>
+        <div>
+            <img class="pokeimage" src="/pokemon.jpg"
+            style="width:auto;height:300px;"/>
+          </div>
+    </CENTER>
 
     <h2><b>PokePredictor</b></h2>
-    <form action = "/result" method="POST">
+    <form action = "/result" method="POST" autocomplete="on">
 
       <h4>Enter your PokeGo information to see <br />
         the Pokemon you are searching for.</h4>
