@@ -2,166 +2,190 @@
 <html lang="en" dir="ltr">
   <head>
     <title>PokePredictor</title>
-      <link rel="stylesheet" type="text/css" href="style.css">
+      <link rel="stylesheet" type="text/css" href="static/style.css">
   </head>
   <body>
-    <style>
-      body {
-        color: black;
-        font-family: candara;
-        /* background-image: url('../assets/poke.jpg'); */
-      }
-    </style>
+    <h1 align="center"  style="font-size:50px;" >PokePredictor</h1>
 
-    <CENTER>
-        <div>
-            <img class="pokeimage" src="/pokemon.jpg"
-            style="width:auto;height:300px;"/>
-          </div>
-    </CENTER>
+      <div class="twosides">
 
-    <h2><b>PokePredictor</b></h2>
-    <form action = "/result" method="POST" autocomplete="on">
+        <div class="leftside">
+          <img src="static/pokemon.jpg"  style="width:auto;height:350px;" align="left" hspace="70" vspace="35"/>
+          <br><br />
+            <!-- <p style="font-size:10px"> Image Source:
+              <a href="https://www.dailydot.com/wp-content/uploads/95d/c5/1997da50007d1bff89dde13d22f8e371.jpg">Daily Dot</a><br>
+                </p> -->
+              </div>
 
-      <h4>Enter your PokeGo information to see <br />
-        the Pokemon you are searching for.</h4>
+      <div class="rightside">
+        <form action = "/result" method="POST" >
 
-        <p>Latitude:<input name="latitude" required type="number"></p>
+          <h4>Enter your PokeGo information to see <br/>
+            the Pokemon you are searching for.</h4>
 
-        <p>Longitude:<input name="longitude" required type="number"></p>
+            <p>Close to water:<br>
+              <input type="radio" name="close_to_water" id="Yes" value="True"/>
+                <label style="font-size: 13px; font-family:candara;">Yes</label><br />
+              <input type="radio" name="close_to_water" id="No" value="False"/>
+                <label style="font-size: 13px;font-family:candara;">No</label><br />
+                  </p>
+            <p>City:
+              <select name="city" required>
+              <option value="Adelaide">Adelaide</option>
+              <option value="Amman">Amman</option>
+              <option value="Amsterdam">Amsterdam</option>
+              <option value="Athens">Athens</option>
+              <option value="Auckland">Auckland</option>
+              <option value="Bahia">Bahia</option>
+              <option value="Bangkok">Bangkok</option>
+              <option value="Belem">Belem</option>
+              <option value="Berlin">Berlin</option>
+              <option value="Bogota">Bogota</option>
+              <option value="Boise">Boise</option>
+              <option value="Bratislava">Bratislava</option>
+              <option value="Brisbane">Brisbane</option>
+              <option value="Brunei">Brunei</option>
+              <option value="Brussels">Brussels</option>
+              <option value="Bucharest">Bucharest</option>
+              <option value="Buenos_Aires">Buenos Aires</option>
+              <option value="Cairo">Cairo</option>
+              <option value="Casablanca">Casablanca</option>
+              <option value="Chicago">Chicago</option>
+              <option value="Copenhagen">Copenhagen</option>
+              <option value="Cordoba">Cordoba</option>
+              <option value="Costa_Rica">Costa Rica</option>
+              <option value="Damascus">Damascus</option>
+              <option value="Denver">Denver</option>
+              <option value="Detroit">Detroit</option>
+              <option value="Dubai">Dubai</option>
+              <option value="Dublin">Dublin</option>
+              <option value="Edmonton">Edmonton</option>
+              <option value="Fortaleza">Fortaleza</option>
+              <option value="Guam">Guam</option>
+              <option value="Guayaquil">Guayaquil</option>
+              <option value="Guyana">Guyana</option>
+              <option value="Halifax">Halifax</option>
+              <option value="Helsinki">Helsinki</option>
+              <option value="Ho_Chi_Minh">Ho Chi Minh</option>
+              <option value="Hobart">Hobart</option>
+              <option value="Hong_Kong">Hong Kong</option>
+              <option value="Honolulu">Honolulu</option>
+              <option value="Indianapolis">Indianapolis</option>
+              <option value="Isle_of_Man">Isle of Man</option>
+              <option value="Istanbul">Istanbul</option>
+              <option value="Jakarta">Jakarta</option>
+              <option value="Jerusalem">Jerusalem</option>
+              <option value="Karachi">Karachi</option>
+              <option value="Kiev">Kiev</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Kuala_Lumpur">Kuala Lumpur</option>
+              <option value="Kuching">Kuching</option>
+              <option value="Lisbon">Lisbon</option>
+              <option value="Ljubljana">Ljubljana</option>
+              <option value="London">London</option>
+              <option value="Los_Angeles">Los_Angeles</option>
+              <option value="Louisville">Louisville</option>
+              <option value="Luanda">Luanda</option>
+              <option value="Luxembourg">Luxembourg</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Manila">Manila</option>
+              <option value="Melbourne">Melbourne</option>
+              <option value="Mexico_City">Mexico City</option>
+              <option value="Monrovia">Monrovia</option>
+              <option value="Monterrey">Monterrey</option>
+              <option value="Montreal">Montreal</option>
+              <option value="Moscow">Moscow</option>
+              <option value="Nairobi">Nairobi</option>
+              <option value="New_York">New York</option>
+              <option value="Nicosia">Nicosia</option>
+              <option value="Noumea">Noumea</option>
+              <option value="Oslo">Oslo</option>
+              <option value="Paris">Paris</option>
+              <option value="Perth">Perth</option>
+              <option value="Phnom_Penh">Phnom Phenh</option>
+              <option value="Phoenix">Phoenix</option>
+              <option value="Prague">Prague</option>
+              <option value="Puerto_Rico">Puerto Rico</option>
+              <option value="Regina">Regina</option>
+              <option value="Reunion">Reunion</option>
+              <option value="Reykjavik">Reykjavik</option>
+              <option value="Rome">Rome</option>
+              <option value="Santiago">Santiago</option>
+              <option value="Sao_Paulo">Sao Paulo</option>
+              <option value="Sarajevo">Sarajevo</option>
+              <option value="Singapore">Singapore</option>
+              <option value="Stockholm">Stockholm</option>
+              <option value="Sydney">Sydney</option>
+              <option value="Tahiti">Tahiti</option>
+              <option value="Taipei">Taipei</option>
+              <option value="Tokyo">Tokyo</option>
+              <option value="Toronto">Toronto</option>
+              <option value="Tripoli">Tripoli</option>
+              <option value="Tunis">Tunis</option>
+              <option value="Vancouver">Vancouver</option>
+              <option value="Vienna">Vienna</option>
+              <option value="Vilnius">Vilnius</option>
+              <option value="Warsaw">Warsaw</option>
+              <option value="Winnipeg">Winnipeg</option>
+              <option value="Zagreb">Zagreb</option>
+              <option value="Zurich">Zurich</option>
+            </select></p>
 
-        <p>Close to water:
-        <select name="close_to_water" required>
-          <option value="True">Yes</option>
-          <option value="False">No</option>
-        </select>
+            <p>Weather:
+              <select name="weather" style="font-family: candara;">
+                <option value = "Breezy">Breezy</option>
+                <option value = "BreezyandMostlyCloudy">Breezy and mostly cloudy</option>
+                <option value = "BreezyandOvercast">Breezy and overcast</option>
+                <option value = "BreezyandPartlyCloudy">Breezy and partly cloudy</option>
+                <option value = "Clear">Clear</option>
+                <option value = "DangerouslyWindy">Dangerously windy</option>
+                <option value = "Drizzle">Drizzle</option>
+                <option value = "DrizzleandBreezy">Drizzle and breezy</option>
+                <option value = "Dry">Dry</option>
+                <option value = "DryandMostlyCloudy">Dry and mostly cloudy</option>
+                <option value = "DryandPartlyCloudy">Dry and Partly Cloudy</option>
+                <option value = "Foggy">Foggy</option>
+                <option value = "HeavyRain">Heavy Rain</option>
+                <option value = "Humid">Humid</option>
+                <option value = "HumidandOvercast">Humid and overcast</option>
+                <option value = "HumidandPartlyCloudy">Humid and partly cloudy</option>
+                <option value = "LightRain">Light Rain</option>
+                <option value = "LightRainandBreezy">Light rain and breezy</option>
+                <option value = "MostlyCloudy">Mostly cloudy</option>
+                <option value = "Overcast">Overcast</option>
+                <option value = "PartlyCloudy">Partly cloudy</option>
+                <option value = "Rain">Rain</option>
+                <option value = "RainandWindy">Rain and windy</option>
+                <option value = "Windy">Zurich</option>
+                <option value = "WindyandFoggy">Windy and foggy</option>
+                <option value = "WindyandPartlyCloudy">Windy and partly cloudy</option>
+              </select>
 
-        <p>City:
-          <select name="city" required>
-          <option value="Adelaide">Adelaide</option>
-          <option value="Amman">Amman</option>
-          <option value="Amsterdam">Amsterdam</option>
-          <option value="Athens">Athens</option>
-          <option value="Auckland">Auckland</option>
-          <option value="Bahia">Bahia</option>
-          <option value="Bangkok">Bangkok</option>
-          <option value="Belem">Belem</option>
-          <option value="Berlin">Berlin</option>
-          <option value="Bogota">Bogota</option>
-          <option value="Boise">Boise</option>
-          <option value="Bratislava">Bratislava</option>
-          <option value="Brisbane">Brisbane</option>
-          <option value="Brunei">Brunei</option>
-          <option value="Brussels">Brussels</option>
-          <option value="Bucharest">Bucharest</option>
-          <option value="Buenos_Aires">Buenos Aires</option>
-          <option value="Cairo">Cairo</option>
-          <option value="Casablanca">Casablanca</option>
-          <option value="Chicago">Chicago</option>
-          <option value="Copenhagen">Copenhagen</option>
-          <option value="Cordoba">Cordoba</option>
-          <option value="Costa_Rica">Costa Rica</option>
-          <option value="Damascus">Damascus</option>
-          <option value="Denver">Denver</option>
-          <option value="Detroit">Detroit</option>
-          <option value="Dubai">Dubai</option>
-          <option value="Dublin">Dublin</option>
-          <option value="Edmonton">Edmonton</option>
-          <option value="Fortaleza">Fortaleza</option>
-          <option value="Guam">Guam</option>
-          <option value="Guayaquil">Guayaquil</option>
-          <option value="Guyana">Guyana</option>
-          <option value="Halifax">Halifax</option>
-          <option value="Helsinki">Helsinki</option>
-          <option value="Ho_Chi_Minh">Ho Chi Minh</option>
-          <option value="Hobart">Hobart</option>
-          <option value="Hong_Kong">Hong Kong</option>
-          <option value="Honolulu">Honolulu</option>
-          <option value="Indianapolis">Indianapolis</option>
-          <option value="Isle_of_Man">Isle of Man</option>
-          <option value="Istanbul">Istanbul</option>
-          <option value="Jakarta">Jakarta</option>
-          <option value="Jerusalem">Jerusalem</option>
-          <option value="Karachi">Karachi</option>
-          <option value="Kiev">Kiev</option>
-          <option value="Kolkata">Kolkata</option>
-          <option value="Kuala_Lumpur">Kuala Lumpur</option>
-          <option value="Kuching">Kuching</option>
-          <option value="Lisbon">Lisbon</option>
-          <option value="Ljubljana">Ljubljana</option>
-          <option value="London">London</option>
-          <option value="Los_Angeles">Los_Angeles</option>
-          <option value="Louisville">Louisville</option>
-          <option value="Luanda">Luanda</option>
-          <option value="Luxembourg">Luxembourg</option>
-          <option value="Madrid">Madrid</option>
-          <option value="Manila">Manila</option>
-          <option value="Melbourne">Melbourne</option>
-          <option value="Mexico_City">Mexico City</option>
-          <option value="Monrovia">Monrovia</option>
-          <option value="Monterrey">Monterrey</option>
-          <option value="Montreal">Montreal</option>
-          <option value="Moscow">Moscow</option>
-          <option value="Nairobi">Nairobi</option>
-          <option value="New_York">New York</option>
-          <option value="Nicosia">Nicosia</option>
-          <option value="Noumea">Noumea</option>
-          <option value="Oslo">Oslo</option>
-          <option value="Paris">Paris</option>
-          <option value="Perth">Perth</option>
-          <option value="Phnom_Penh">Phnom Phenh</option>
-          <option value="Phoenix">Phoenix</option>
-          <option value="Prague">Prague</option>
-          <option value="Puerto_Rico">Puerto Rico</option>
-          <option value="Regina">Regina</option>
-          <option value="Reunion">Reunion</option>
-          <option value="Reykjavik">Reykjavik</option>
-          <option value="Rome">Rome</option>
-          <option value="Santiago">Santiago</option>
-          <option value="Sao_Paulo">Sao Paulo</option>
-          <option value="Sarajevo">Sarajevo</option>
-          <option value="Singapore">Singapore</option>
-          <option value="Stockholm">Stockholm</option>
-          <option value="Sydney">Sydney</option>
-          <option value="Tahiti">Tahiti</option>
-          <option value="Taipei">Taipei</option>
-          <option value="Tokyo">Tokyo</option>
-          <option value="Toronto">Toronto</option>
-          <option value="Tripoli">Tripoli</option>
-          <option value="Tunis">Tunis</option>
-          <option value="Vancouver">Vancouver</option>
-          <option value="Vienna">Vienna</option>
-          <option value="Vilnius">Vilnius</option>
-          <option value="Warsaw">Warsaw</option>
-          <option value="Winnipeg">Winnipeg</option>
-          <option value="Zagreb">Zagreb</option>
-          <option value="Zurich">Zurich</option>
-        </select>
+              <p>Temperature (celcius):<input
+                  name="temperature"
+                  required type="number"
+                  placeholder="15"
+                  style ="font-family: candara; width:10%; padding: 5px 8px;
+                    margin: 5px 0; box-sizing: border-box;"
+                    >
+              </p>
 
-      <!-- <p>Weather:
-        <select name="weather">
-          <option value = "Breezy">Breezy</option>
-          <option value = "Clear">Clear</option>
-          <option value = "DangerouslyWindy">Dangerously Windy</option>
-          <option value = "Drizzle">Drizzle</option>
-          <option value = "Dry">Dry</option>
-          <option value = "Foggy">Foggy</option>
-          <option value = "HeavyRain">Heavy Rain</option>
-          <option value = "Humid">Humid</option>
-          <option value = "LightRain">Light Rain</option>
-          <option value = "MostlyCloudy">Mostly Cloudy</option>
-          <option value = "Overcast">Overcast</option>
-          <option value = "PartlyCloudy">Partly Cloudy</option>
-          <option value = "Rain">Rain</option>
-          <option value = "Windy">Zurich</option>
-        </select> -->
+              <p><input type ="submit"
+                  value="Submit"
+                  style="background-color:rgba(250, 0, 0, 0.2);
+                    padding: 5px; width: 10px; height:30px; width: 80px;
+                    color:black; text-size:24; font-weight: bold; border:none;font-family: candara;"/>
+                  </p>
 
-        <p>Temperature:<input name="temperature" required type="number"></p>
+                </form>
+                </div>
 
-        <!-- <p>Population Density:<input name="population_density" required type="number"></p> -->
+    <div>
+      <p style="font-size:10px;" align="left"; bottom=0> Image Source:
+        <a href="https://www.dailydot.com/wp-content/uploads/95d/c5/1997da50007d1bff89dde13d22f8e371.jpg">Daily Dot</a><br>
+          </p>
+        </div>
+        </div>
 
-      <p><input type ="submit" value="submit"/></p>
-
-    </form>
   </body>
 </html>

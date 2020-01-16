@@ -32,7 +32,52 @@ df.info()
 
 df.describe().T
 
+df.groupby('city')['city'].count()
+
+# 68,499 are close to water
+df['close_to_water'].sum()
+
+df.city.groupby(df['close_to_water'] == True).sum()
+
+water_city = df.groupby(['city','close_to_water'])['close_to_water'].count()
+
+# Top 20 cities neatr water
+water_city['city'].loc['Chicago',
+'New_York',
+'Los_Angeles',
+'Stockholm',
+'London',
+'Toronto',
+'Madrid',
+'Oslo',
+'Paris',
+'Tokyo',
+'Brunei',
+'Hong_Kong',
+'Vancouver',
+'Rome',
+'Manila',
+'Sao_Paulo',
+'Buenos_Aires',
+'Auckland',
+'Singapore',
+'Puerto_Rico']
+
+
+
+# Water by city
+df.groupby('city').agg({'close_to_water': pd.Series.sum}).sort_values('close_to_water', ascending=False).head(20)
+
+# water_city[[water_city['close_to_water'] == True]]
+
+
+# water
 df.groupby('city').count()
+
+df.groupby('city').count()
+
+
+df.groupby('city')['close_to_water'].count().sort_values(ascending=False).head(50)
 
 
 # Set of cities
@@ -46,9 +91,9 @@ month = set(month)
 month
 
 # Clean weather column
-# weather_types = df['weather'].to_list()
-# weather_types = set(weather_types)
-# weather_types
+weather_types = df['weather'].to_list()
+weather_types = set(weather_types)
+weather_types
 #
 # df['weather'].loc['BreezyandMostlyCloudy']
 #
@@ -117,7 +162,7 @@ month
 
 # target = df['pokedex_id']
 y = df['pokedex_id']
-X = df.drop(['pokedex_id', 'weather', 'local_time'], axis = 1)
+X = df.drop(['pokedex_id', 'latitude', 'longitude','local_time', 'population_density'], axis = 1)
 l = len(y)
 
 
@@ -125,11 +170,11 @@ X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2)
 
 mapper = DataFrameMapper([
     (['city'], [LabelBinarizer()]),
-    # (['weather'], [MultiLabelBinarizer(weather_types)]),
+    (['weather'], [LabelBinarizer()]),
     (['close_to_water'], [LabelBinarizer()]),
-    (['latitude'], [StandardScaler()]),
-    (['longitude'], [StandardScaler()]),
-    (['temperature'], [StandardScaler()]),
+    # (['latitude'], [StandardScaler()]),
+    # (['longitude'], [StandardScaler()]),
+    (['temperature'], [StandardScaler()])
     # (['population_density'], [StandardScaler()])
     # (['local_time'], [LabelBinarizer()]),
     ], df_out= True)

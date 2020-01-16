@@ -15,11 +15,9 @@ def index():
 def result():
     args = request.form
     data = pd.DataFrame({
-            'latitude': [float(args.get('latitude'))],
-            'longitude': [float(args.get('longitude'))],
             'close_to_water': [args.get('close_to_water')],
             'city': [args.get('city')],
-            # 'weather': [args.get('weather')],
+            'weather': [args.get('weather')],
             'temperature': [args.get('temperature')]
         })
     id = int(pipe.predict(data))

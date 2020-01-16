@@ -59,9 +59,22 @@ for row in table.find_all('tr')[1:-1]:
                 'type_2': type2
         }
 
-df = pd.DataFrame.from_dict(pokedex, orient='index')
-df.to_csv('data/pokedex.csv', index=False)
-df.head()
+df1 = pd.DataFrame.from_dict(pokedex, orient='index')
+df1.to_csv('data/pokedex.csv', index=False)
+df1.shape
+df1.columns
+
+df2 = pd.read_csv('data/pokemon_go.csv')
+df2.shape
+df2.columns
+
+df3 = df2.merge(df1)
+df3.to_csv('data/pokepredictor.csv', index=False)
+df3.shape
+df3.columns
+
+df3.head()
+
 
 ###################################################
 # sandbox
