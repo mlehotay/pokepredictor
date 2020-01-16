@@ -41,6 +41,10 @@ for row in table.find_all('tr')[1:-1]:
 
     if id not in pokedex:
         name = cells[3].text.strip()
+        wiki =  bulbapedia + cells[2].find('a')['href']
+        soup2 = BeautifulSoup(fetch_url(wiki))
+        image = 'https://' + soup2.find_all('td', colspan='2')[1].find('img')['src'][2:]
+
         try:
             type1 = cells[4].text.strip()
         except:
@@ -53,8 +57,8 @@ for row in table.find_all('tr')[1:-1]:
         pokedex[id] = {
                 'pokedex_id': id,
                 'name': name,
-                'img': 'https://' + cells[2].find('img')['src'][2:],
-                'wiki': bulbapedia + cells[2].find('a')['href'],
+                'wiki': wiki,
+                'img': image,
                 'type_1': type1,
                 'type_2': type2
         }
@@ -80,6 +84,8 @@ df3.head()
 # sandbox
 soup = BeautifulSoup(fetch_url(url_pokedex))
 table = soup.find(id='Generation_I').parent.next_sibling.next_sibling
-row = table.find_all('tr')[10]
+row = table.find_all('tr')[25]
 cells = row.find_all(re.compile('t[hd]'))
-cells[2].find('img')['src'][2:]
+wiki = bulbapedia + cells[2].find('a')['href']
+soup2 = BeautifulSoup(fetch_url(wiki))
+image = 'https://' + soup2.find_all('td', colspan='2')[1].find('img')['src'][2:]
