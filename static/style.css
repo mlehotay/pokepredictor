@@ -1,7 +1,6 @@
 body {
   color: black;
   font-family: candara;
-  /* background-image: url('../assets/poke.jpg'); */
 }
 
 div.leftside {
@@ -14,13 +13,15 @@ div.rightside {
   width: 50%;
 }
 
-
 input[type=text], select {
   padding: 5px 8px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 
 a {
@@ -37,45 +38,3 @@ select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
-
-
-/* body {
-  color: black;
-  font-family: candara;
-  /* background-image: url('../assets/poke.jpg'); */
-/* }
-
-.pokeimage {
-  height: 10;
-  align: middle;
-  display: inline-block;
-  float: left;
-}
-
-a {
-  font-size: 5px;
-} */
-
-
-
-
-
-/* div.absolute {
-  position: absolute;
-  width: 50%;
-  bottom: 0;
-  align:left;
-  border: 3px solid #8AC007;
-  left:0;
-} */
-
-/* link {
-    font-size: 8px;
-} */
-
-/* div.source {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-} */
