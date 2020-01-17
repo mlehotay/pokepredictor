@@ -5,7 +5,7 @@
 
 
 import pandas as pd
-import seaborn as sns
+#import seaborn as sns
 import numpy as np
 import os
 import catboost as cb
@@ -134,7 +134,7 @@ X_train['day_of_week']  = pd.to_datetime(X_train['week_day']).dt.weekday_name
 
 
 X_test['day_of_week']  = pd.to_datetime(X_test['week_day']).dt.weekday_name
-   
+
 
 
 # In[ ]:
@@ -173,7 +173,7 @@ X_test.drop('week_day', 1, inplace=True)
 
 
 ### save modified X and y  data frames
-#export_csv = df.to_csv (r'data\modified_pokemon_go.csv', index = None, header=True) 
+#export_csv = df.to_csv (r'data\modified_pokemon_go.csv', index = None, header=True)
 
 
 # In[ ]:
@@ -219,7 +219,7 @@ class DateEncoder(TransformerMixin):
 DATE_COLS = ['local_time']
 
 datemult = DataFrameMapper(
-            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ] 
+            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ]
             , input_df=True, df_out=True)
 
 dtime = datemult.fit_transform(X_train)
@@ -231,7 +231,7 @@ dtime = datemult.fit_transform(X_train)
 DATE_COLS = ['local_time']
 
 datemult = DataFrameMapper(
-            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ] 
+            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ]
             , input_df=True, df_out=True)
 
 dtime_test = datemult.fit_transform(X_test)
@@ -356,34 +356,34 @@ Z_test = mapper.transform(X_test)
 CAT BOOST CLASSIFIER
 
 model = cb.CatBoostClassifier(
-    iterations=5, 
+    iterations=5,
     early_stopping_rounds=10,
     custom_loss=['AUC', 'Accuracy'])
-    
+
     model.fit(
-    Z_train, 
+    Z_train,
     y_train,
     eval_set=(Z_test, y_test),
     verbose=False,
     plot= False)
-    
+
     train_score = model.score(Z_train, y_train) # train (learn) score
     val_score = model.score(Z_test, y_test) # val (test) score
     print(train_score, val_score)
- """   
+ """
 
 
 # In[ ]:
 
 
-model = LogisticRegression(solver='lbfgs', max_iter = 500)
-model.fit(Z_train, y_train)
+model = LogisticRegression(solver='lbfgs', max_iter = 100)
+#model.fit(Z_train, y_train)
 
 
 # In[ ]:
 
 
-y_pred = model.predict(Z_test)
+#y_pred = model.predict(Z_test)
 
 
 # In[ ]:
@@ -395,15 +395,15 @@ y_pred = model.predict(Z_test)
 # In[ ]:
 
 
-from sklearn.metrics import confusion_matrix
-confusion_matrix = confusion_matrix(y_test, y_pred)
-confusion_matrix
+#from sklearn.metrics import confusion_matrix
+#confusion_matrix = confusion_matrix(y_test, y_pred)
+#confusion_matrix
 
 
 # In[ ]:
 
 
-print(classification_report(y_test, y_pred))
+#print(classification_report(y_test, y_pred))
 
 
 # In[ ]:
@@ -423,4 +423,3 @@ pickle.dump(pipe, open('model/pipe.pkl', 'wb'))
 del pipe
 pipe = pickle.load(open('model/pipe.pkl', 'rb'))
 pipe
-
