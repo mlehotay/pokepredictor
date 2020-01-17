@@ -12,9 +12,6 @@
         <div class="leftside">
           <img src="static/pokemon.jpg"  style="width:auto;height:350px;" align="left" hspace="70" vspace="35"/>
           <br><br />
-            <!-- <p style="font-size:10px"> Image Source:
-              <a href="https://www.dailydot.com/wp-content/uploads/95d/c5/1997da50007d1bff89dde13d22f8e371.jpg">Daily Dot</a><br>
-                </p> -->
               </div>
 
       <div class="rightside">
@@ -23,14 +20,8 @@
           <h4>Enter your PokeGo information to see <br/>
             the Pokemon you are searching for.</h4>
 
-            <p>Close to water:<br>
-              <input type="radio" name="close_to_water" id="Yes" value="True"/>
-                <label style="font-size: 13px; font-family:candara;">Yes</label><br />
-              <input type="radio" name="close_to_water" id="No" value="False"/>
-                <label style="font-size: 13px;font-family:candara;">No</label><br />
-                  </p>
             <p>City:
-              <select name="city" required>
+              <select name="city" style="font-family: candara;" required>
               <option value="Adelaide">Adelaide</option>
               <option value="Amman">Amman</option>
               <option value="Amsterdam">Amsterdam</option>
@@ -131,6 +122,13 @@
               <option value="Zurich">Zurich</option>
             </select></p>
 
+            <p>Close to water:<br>
+              <input type="radio" name="close_to_water" id="Yes" value="True"/>
+                <label style="font-size: 13px; font-family:candara;">Yes</label><br />
+              <input type="radio" name="close_to_water" id="No" value="False"/>
+                <label style="font-size: 13px;font-family:candara;">No</label><br />
+                  </p>
+
             <p>Weather:
               <select name="weather" style="font-family: candara;">
                 <option value = "Breezy">Breezy</option>
@@ -160,6 +158,7 @@
                 <option value = "WindyandFoggy">Windy and foggy</option>
                 <option value = "WindyandPartlyCloudy">Windy and partly cloudy</option>
               </select>
+            </p>
 
               <p>Temperature (celcius):<input
                   name="temperature"
@@ -167,6 +166,27 @@
                   placeholder="15"
                   style ="font-family: candara; width:10%; padding: 5px 8px;
                     margin: 5px 0; box-sizing: border-box;"
+                    >
+              </p>
+
+              <p>Day of the week:
+                <select name="day_of_week" style="font-family: candara;">
+                  <option value = "Sunday">Sunday</option>
+                  <option value = "Monday">Monday</option>
+                  <option value = "Tuesday">Tuesday</option>
+                  <option value = "Wednesday">Wednesday</option>
+                  <option value = "Thursday">Thursday</option>
+                  <option value = "Friday">Friday</option>
+                  <option value = "Saturday">Saturday</option>
+                </select>
+              </p>
+
+              <p>Local time (24-hour):<input
+                  name="local_time"
+                  required type="number"
+                  placeholder="12" step="1" min="0" max="24"
+                  style ="font-family: candara; width:12%; padding:5px 8px;
+                  margin:5px 0; box-sizing: border-box;"
                     >
               </p>
 

@@ -5,12 +5,12 @@
 
 
 import pandas as pd
-import seaborn as sns
+# import seaborn as sns
 import numpy as np
 import os
 import catboost as cb
 from catboost import Pool, CatBoostRegressor, CatBoostClassifier
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 from sklearn.dummy import DummyRegressor
 from sklearn.ensemble import RandomForestClassifier
 
@@ -42,7 +42,7 @@ from sklearn.metrics import classification_report
 pd.set_option('display.max_rows', 100)
 #np.set.printoptions(prediction = 4)
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+# get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 # In[2]:
@@ -152,7 +152,7 @@ X_train['day_of_week']  = pd.to_datetime(X_train['week_day']).dt.weekday_name
 
 
 X_test['day_of_week']  = pd.to_datetime(X_test['week_day']).dt.weekday_name
-   
+
 
 
 # In[19]:
@@ -191,7 +191,7 @@ X_test.drop('week_day', 1, inplace=True)
 
 
 ### save modified X and y  data frames
-#export_csv = df.to_csv (r'data\modified_pokemon_go.csv', index = None, header=True) 
+#export_csv = df.to_csv (r'data\modified_pokemon_go.csv', index = None, header=True)
 
 
 # In[24]:
@@ -237,7 +237,7 @@ class DateEncoder(TransformerMixin):
 DATE_COLS = ['local_time']
 
 datemult = DataFrameMapper(
-            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ] 
+            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ]
             , input_df=True, df_out=True)
 
 dtime = datemult.fit_transform(X_train)
@@ -249,7 +249,7 @@ dtime = datemult.fit_transform(X_train)
 DATE_COLS = ['local_time']
 
 datemult = DataFrameMapper(
-            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ] 
+            [ (i,[DateFormatter(),DateEncoder()]) for i in DATE_COLS     ]
             , input_df=True, df_out=True)
 
 dtime_test = datemult.fit_transform(X_test)
@@ -371,7 +371,7 @@ Z_test = mapper.transform(X_test)
 
 
 model = cb.CatBoostClassifier(
-    iterations=5, 
+    iterations=5,
     early_stopping_rounds=10,
     custom_loss=['AUC', 'Accuracy'])
 
@@ -380,11 +380,11 @@ model = cb.CatBoostClassifier(
 
 
 model.fit(
-    Z_train, 
+    Z_train,
     y_train,
     eval_set=(Z_test, y_test),
     verbose=False,
-    plot=True)
+    plot=False)
 
 
 # In[46]:
@@ -443,7 +443,3 @@ pipe
 
 
 # In[ ]:
-
-
-
-
