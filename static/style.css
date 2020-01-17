@@ -1,6 +1,9 @@
 body {
   color: black;
   font-family: candara;
+  margin:0;
+  padding: 0;
+  border: 10px #808080;
 }
 
 div.leftside {
