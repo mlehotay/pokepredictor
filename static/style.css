@@ -28,13 +28,3 @@ a {
   font-size: 10px;
   align: left;
 }
-
-select {
-  -webkit-appearance: none;
-  font-family: candara;
-  padding: 5px 8px;
-  margin: 5px 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
